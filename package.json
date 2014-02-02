@@ -1,0 +1,12 @@
+{
+  "name": "Versed-Backend",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "main": "index.js",
+  "scripts": {},
+  "author": "Nathan Kluth",
+  "dependencies": {},
+  "bundledDependencies": []
+}
