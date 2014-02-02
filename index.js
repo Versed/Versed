@@ -4,6 +4,11 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
+/** Configuration **/
+
+
+/** Routing **/
+
 app.get('/', function(req, res) {
   res.send('This is Versed!');
 });
