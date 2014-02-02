@@ -6,8 +6,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "debug": "DEBUG=shim:* node-dev index.js"
+    "start": "node index.js --harmony",
+    "debug": "DEBUG=shim:* node-dev index.js --harmony"
   },
   "author": "Nathan Kluth",
   "dependencies": {
