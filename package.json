@@ -5,7 +5,10 @@
     "node": "0.10.x"
   },
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js",
+    "debug": "DEBUG=shim:* node-dev index.js"
+  },
   "author": "Nathan Kluth",
   "dependencies": {
     "koa": "~0.3.0",
