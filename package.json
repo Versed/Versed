@@ -7,6 +7,10 @@
   "main": "index.js",
   "scripts": {},
   "author": "Nathan Kluth",
-  "dependencies": {},
+  "dependencies": {
+    "koa": "~0.3.0",
+    "cheerio": "~0.13.1",
+    "lodash": "~2.4.1"
+  },
   "bundledDependencies": []
 }
