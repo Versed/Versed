@@ -8,10 +8,9 @@ var port = process.env.PORT || 3000;
 
 
 /** Routing **/
+var books = require('./lib/books');
 
-app.get('/', function(req, res) {
-  res.send('This is Versed!');
-});
+app.get('/books', books.list);
 
 app.listen(port);
 debug('Listening on %d', port);
