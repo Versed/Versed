@@ -1,8 +1,10 @@
 var express = require('express');
 var debug = require('debug')('shim:server');
 var app = express();
+var db  = require('./database');
 
 var port = process.env.PORT || 3000;
+db.init();
 
 /** Configuration **/
 
