@@ -16,5 +16,8 @@
     "debug": "~0.7.4",
     "express": "~3.4.8"
   },
-  "bundledDependencies": []
+  "bundledDependencies": [],
+  "devDependencies": {
+    "mongoose": "~3.8.8"
+  }
 }
