@@ -13,6 +13,10 @@ db.init();
 var books = require('./lib/books');
 
 app.get('/books', books.list);
+app.post('/books', books.create);
+app.get('/books/:id', books.detail);
+app.put('/books/:id', books.update);
+app.delete('/books/:id', books.destroy);
 
 app.listen(port);
 debug('Listening on %d', port);
