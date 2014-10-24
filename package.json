@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Versed/Versed/issues"
   },
-  "homepage": "https://github.com/Versed/Versed"
+  "homepage": "https://github.com/Versed/Versed",
+  "devDependencies": {
+    "require-dir": "^0.1.0"
+  }
 }
