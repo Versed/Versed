@@ -1,4 +1,5 @@
-/*global app, me, $*/
+'use strict';
+/*global app, me*/
 // This app view is responsible for rendering all content that goes into
 // <html>. It's initted right away and renders itself on DOM ready.
 
@@ -14,72 +15,74 @@ var setFavicon = require('favicon-setter');
 
 
 module.exports = View.extend({
-    template: templates.body,
-    initialize: function () {
-        // this marks the correct nav item selected
-        this.listenTo(app.router, 'page', this.handleNewPage);
-    },
-    events: {
-        'click a[href]': 'handleLinkClick'
-    },
-    render: function () {
-        // some additional stuff we want to add to the document head
-        document.head.appendChild(domify(templates.head()));
+  template: templates.body,
+  initialize: function () {
+    // this marks the correct nav item selected
+    this.listenTo(app.router, 'page', this.handleNewPage);
+  },
 
-        // main renderer
-        this.renderWithTemplate({me: me});
+  events: {
+    'click a[href]': 'handleLinkClick'
+  },
 
-        // init and configure our page switcher
-        this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'), {
-            show: function (newView, oldView) {
-                // it's inserted and rendered for me
-                document.title = _.result(newView, 'pageTitle') || "Versed";
-                document.scrollTop = 0;
+  render: function () {
+    // some additional stuff we want to add to the document head
+    document.head.appendChild(domify(templates.head()));
 
-                // add a class specifying it's active
-                dom.addClass(newView.el, 'active');
+    // main renderer
+    this.renderWithTemplate({me: me});
 
-                // store an additional reference, just because
-                app.currentPage = newView;
-            }
-        });
+    // init and configure our page switcher
+    this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'), {
+      show: function (newView, oldView) {
+        // it's inserted and rendered for me
+        document.title = _.result(newView, 'pageTitle') || 'Versed';
+        document.scrollTop = 0;
 
-        // setting a favicon for fun (note, it's dynamic)
-        setFavicon('/images/ampersand.png');
-        return this;
-    },
+        // add a class specifying it's active
+        dom.addClass(newView.el, 'active');
 
-    handleNewPage: function (view) {
-        // tell the view switcher to render the new one
-        this.pageSwitcher.set(view);
+        // store an additional reference, just because
+        app.currentPage = newView;
+      }
+    });
 
-        // mark the correct nav item selected
-        this.updateActiveNav();
-    },
+    // setting a favicon for fun (note, it's dynamic)
+    setFavicon('/images/ampersand.png');
+    return this;
+  },
 
-    handleLinkClick: function (e) {
-        var aTag = e.target;
-        var local = aTag.host === window.location.host;
+  handleNewPage: function (view) {
+    // tell the view switcher to render the new one
+    this.pageSwitcher.set(view);
 
-        // if it's a plain click (no modifier keys)
-        // and it's a local url, navigate internally
-        if (local && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
-            e.preventDefault();
-            app.navigate(aTag.pathname);
-        }
-    },
+    // mark the correct nav item selected
+    this.updateActiveNav();
+  },
 
-    updateActiveNav: function () {
-        var path = window.location.pathname.slice(1);
+  handleLinkClick: function (e) {
+    var aTag = e.target;
+    var local = aTag.host === window.location.host;
 
-        this.queryAll('.nav a[href]').forEach(function (aTag) {
-            var aPath = aTag.pathname.slice(1);
-
-            if ((!aPath && !path) || (aPath && path.indexOf(aPath) === 0)) {
-                dom.addClass(aTag.parentNode, 'active');
-            } else {
-                dom.removeClass(aTag.parentNode, 'active');
-            }
-        });
+    // if it's a plain click (no modifier keys)
+    // and it's a local url, navigate internally
+    if (local && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
+      e.preventDefault();
+      app.navigate(aTag.pathname);
     }
+  },
+
+  updateActiveNav: function () {
+    var path = window.location.pathname.slice(1);
+
+    this.queryAll('.nav a[href]').forEach(function (aTag) {
+      var aPath = aTag.pathname.slice(1);
+
+      if ((!aPath && !path) || (aPath && path.indexOf(aPath) === 0)) {
+        dom.addClass(aTag.parentNode, 'active');
+      } else {
+        dom.removeClass(aTag.parentNode, 'active');
+      }
+    });
+  }
 });
