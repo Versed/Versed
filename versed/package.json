@@ -21,9 +21,10 @@
     "getconfig": "^0.3.0",
     "hapi": "^6.0.2",
     "moonboots_hapi": "^2.4.0",
-    "stylizer": "^1.0.0",
-    "templatizer": "^1.0.0",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "lessitizer": "^1.2.0",
+    "templatizer-hbs": "0.0.1",
+    "handlebars": "^2.0.0"
   },
   "devDependencies": {},
   "jshintConfig": {
