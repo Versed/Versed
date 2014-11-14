@@ -23,8 +23,8 @@
     "moonboots_hapi": "^2.4.0",
     "underscore": "^1.6.0",
     "lessitizer": "^1.2.0",
-    "templatizer-hbs": "0.0.1",
-    "handlebars": "^2.0.0"
+    "handlebars": "^2.0.0",
+    "templatizer": "^1.1.0"
   },
   "devDependencies": {},
   "jshintConfig": {

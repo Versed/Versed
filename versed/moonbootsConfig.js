@@ -1,7 +1,7 @@
 'use strict';
 var config = require('getconfig');
 var lessitizer = require('lessitizer');
-var templatizer = require('templatizer-hbs');
+var templatizer = require('templatizer');
 var appDir = __dirname + '/client';
 var cssDir = __dirname + '/public';
 
@@ -29,7 +29,7 @@ module.exports = {
     ],
     beforeBuildJS: function () {
       if (config.isDev) {
-        templatizer(__dirname + '/templates/*.hbs', appDir + '/templates.js');
+        templatizer(__dirname + '/templates', appDir + '/templates.js');
       }
     },
     beforeBuildCSS: function (done) {
@@ -46,7 +46,7 @@ module.exports = {
       }, function(err, files) {
         console.log(err || 'No errors!');
         console.log(files);
-      });
+      }, done);
     }
   }
 };
